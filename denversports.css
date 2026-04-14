@@ -1,0 +1,428 @@
+/* =============================================
+   Denver Sports Page - Custom Stylesheet
+   Ryan Dunford | Web Dev Final Project
+   ============================================= */
+
+/* --- Root Variables --- */
+:root {
+  --broncos-orange: #FB4F14;
+  --broncos-navy: #002244;
+  --avs-burgundy: #6F263D;
+  --avs-blue: #236192;
+  --avs-silver: #A2AAAD;
+  --nuggets-gold: #FEC524;
+  --nuggets-blue: #0E2240;
+  --nuggets-red: #8B2131;
+  --dark-bg: #0a0a0f;
+  --card-bg: #12121a;
+  --text-light: #f0f0f0;
+  --text-muted: #9ca3af;
+}
+
+/* --- Base & Body --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+h1 { font-size: clamp(3rem, 10vw, 7rem); line-height: 0.95; }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h3 { font-size: 1.6rem; }
+
+p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* --- Navigation --- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,15,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.9rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-nav .logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.4rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: #fff; }
+
+.back-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+.back-link:hover { color: #fff; }
+
+/* --- Hero --- */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--broncos-navy);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(251,79,20,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 80%, rgba(251,79,20,0.1) 0%, transparent 60%);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+.hero::before {
+  content: 'DENVER';
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(8rem, 20vw, 18rem);
+  color: rgba(255,255,255,0.03);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--broncos-orange);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--broncos-orange);
+}
+
+.hero h1 { margin-bottom: 1.5rem; }
+.hero h1 .city { display: block; color: var(--broncos-orange); }
+.hero h1 .tagline { display: block; color: #fff; }
+
+.hero-desc {
+  max-width: 560px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2.5rem;
+}
+
+.hero-team-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.team-badge {
+  padding: 0.5rem 1.25rem;
+  border-radius: 2px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.team-badge:hover { transform: translateY(-2px); opacity: 0.85; }
+.badge-broncos { background: var(--broncos-orange); color: #fff; }
+.badge-avs { background: var(--avs-burgundy); color: #fff; }
+.badge-nuggets { background: var(--nuggets-gold); color: var(--nuggets-blue); }
+
+/* --- Section Layout Divs --- */
+.section-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.section-number {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.section-title-block h2 { line-height: 1; }
+.section-accent-line {
+  width: 48px;
+  height: 3px;
+  margin-top: 0.5rem;
+}
+
+/* --- Team Sections --- */
+.broncos-section { background-color: #0d0d14; }
+.avs-section { background-color: #0a0a10; }
+.nuggets-section { background-color: #0d0d14; }
+
+/* --- Player Cards --- */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.player-card {
+  background: var(--card-bg);
+  border-radius: 4px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.player-card:hover { transform: translateY(-4px); }
+
+.broncos-card::before { background: var(--broncos-orange); }
+.broncos-card:hover { border-color: rgba(251,79,20,0.3); }
+
+.avs-card::before { background: var(--avs-burgundy); }
+.avs-card:hover { border-color: rgba(111,38,61,0.5); }
+
+.nuggets-card::before { background: var(--nuggets-gold); }
+.nuggets-card:hover { border-color: rgba(254,197,36,0.3); }
+
+.player-number {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.06);
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+.player-name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.player-pos {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.player-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-family: 'Barlow', sans-serif;
+}
+
+/* --- Team About Block --- */
+.team-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .team-about { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+.team-about p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* --- Lists (Nested - Required Element) --- */
+.facts-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: fact-counter;
+}
+
+.facts-list > li {
+  counter-increment: fact-counter;
+  padding: 0.75rem 0 0.75rem 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.facts-list > li::before {
+  content: counter(fact-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  top: 0.75rem;
+}
+
+.facts-list .sub-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.facts-list .sub-list li {
+  font-size: 0.88rem;
+  padding: 0.2rem 0;
+  color: rgba(255,255,255,0.4);
+  border: none;
+}
+
+/* --- Video Section --- */
+.video-section { background: #080808; }
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --- Tableau Section --- */
+.tableau-section { background: #0a0a10; }
+.tableau-wrapper {
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* --- Footer --- */
+.site-footer {
+  background: #05050a;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.25);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: #fff; }

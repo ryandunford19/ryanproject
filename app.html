@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denver Sports Trivia</title>
+
+<style>
+body {
+    background-color: #0b0b14;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #FEC524;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: #111;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #FEC524;
+    color: black;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Denver Sports Trivia</h1>
+
+<div class="container">
+    <p id="question">Click start to play!</p>
+
+    <div id="answers"></div>
+
+    <button id="startBtn" onclick="startGame()">Start Game</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+const questions = [
+    {
+        question: "Who won Super Bowl 50 MVP for Denver?",
+        answers: ["Von Miller", "Peyton Manning", "Aquib Talib", "Emmanuel Sanders"],
+        correct: "Von Miller"
+    },
+    {
+        question: "Who is the Nuggets' MVP center?",
+        answers: ["LeBron James", "Nikola Jokic", "Kevin Durant", "Steph Curry"],
+        correct: "Nikola Jokic"
+    },
+    {
+        question: "Which Avalanche player wears #8?",
+        answers: ["MacKinnon", "Makar", "Landeskog", "Necas"],
+        correct: "Makar"
+    },
+    {
+        question: "Who is the all time leading scorer for the Colorado Avalanche",
+        answers: ["Nathan Mackinnon", "Mikko Rantanen", "Peter Forsberg", "Joe Sakic"],
+        correct: "Joe Sakic"
+    },
+    {
+        question: "Who was the 1998 Super Bowl MVP",
+        answers: ["John Elway", "Rod Smith", "Terrell Davis", "Shannon Sharpe"],
+        correct: "Terrell Davis"
+    },
+    {
+        question: "Which Nuggets player wears #27?",
+        answers: ["Nikola Jokic", "Jamal Murray", "Christian Braun", "Peyton Watson"],
+        correct: "Jamal Murray"
+    }
+];
+
+let currentQuestion = 0;
+
+function startGame() {
+    currentQuestion = 0;
+    document.getElementById("startBtn").style.display = "none"; // hide button
+    showQuestion();
+    document.getElementById("result").innerText = "";
+}
+
+function showQuestion() {
+    let q = questions[currentQuestion];
+    document.getElementById("question").innerText = q.question;
+
+    let answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.answers.forEach(answer => {
+        let btn = document.createElement("button");
+        btn.innerText = answer;
+        btn.onclick = () => checkAnswer(answer);
+        answersDiv.appendChild(btn);
+    });
+}
+
+function checkAnswer(answer) {
+    let correct = questions[currentQuestion].correct;
+
+    if (answer === correct) {
+        document.getElementById("result").innerText = "Correct!";
+    } else {
+        document.getElementById("result").innerText = "Wrong!";
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        setTimeout(showQuestion, 1000);
+    } else {
+        setTimeout(() => {
+            document.getElementById("question").innerText = "Game Over!";
+            document.getElementById("answers").innerHTML = "";
+            document.getElementById("startBtn").style.display = "block"; // show button again
+        }, 1000);
+    }
+}
+</script>
+
+</body>
+</html>
